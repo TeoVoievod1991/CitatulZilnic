@@ -21,8 +21,11 @@ export default function Header() {
 
           overflow-hidden
 
-          px-6
-          py-4
+          px-3
+          py-3
+
+          md:px-6
+          md:py-4
 
           rounded-3xl
 
@@ -54,7 +57,17 @@ export default function Header() {
         "
       >
         <span className="relative z-10 flex items-center gap-2">
-          ✨ Recomandarea zilei
+
+          {/* Doar emoji pe telefon */}
+          <span className="text-2xl md:hidden">
+            ✨
+          </span>
+
+          {/* Text pe PC */}
+          <span className="hidden md:inline">
+            ✨ Recomandarea zilei
+          </span>
+
         </span>
       </Link>
 

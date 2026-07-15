@@ -15,21 +15,22 @@
 .pop-animation {
   animation: pop 0.35s ease-out;
 }
-@keyframes pop {
-  0% {
-    opacity: 0;
-    transform: scale(0.92) translateY(12px);
+
+
+@keyframes dailyGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(0,0,0,0);
   }
 
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+  50% {
+    box-shadow: 0 0 25px rgba(120,120,255,0.35);
   }
 }
 
-.pop-animation {
-  animation: pop 0.35s ease-out;
+.daily-glow {
+  animation: dailyGlow 3s infinite;
 }
+
 
 @keyframes floatBlob {
   0% {
@@ -52,6 +53,7 @@
     transform: translate(-60px, -80px) scale(1);
   }
 }
+
 
 .blob {
   position: absolute;
@@ -88,4 +90,113 @@
   background: #ec4899;
   opacity: .35;
   animation-delay: -9s;
+}
+/* =========================
+   PREMIUM TITLE EFFECT
+========================= */
+
+@keyframes titleShine {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 250% center;
+  }
+}
+
+
+@keyframes titleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+
+.premium-title {
+  background: linear-gradient(
+    90deg,
+    #111827,
+    #4f46e5,
+    #9333ea,
+    #ec4899,
+    #4f46e5,
+    #111827
+  );
+
+  background-size: 300% auto;
+
+  color: transparent;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  animation:
+    titleShine 7s linear infinite,
+    titleFloat 4s ease-in-out infinite;
+
+  filter: drop-shadow(0 10px 25px rgba(99,102,241,0.25));
+}
+
+
+/* =========================
+   LIQUID GLASS REFLECTION
+========================= */
+
+@keyframes glassShine {
+  0% {
+    transform: translateX(-150%) rotate(25deg);
+  }
+
+  100% {
+    transform: translateX(250%) rotate(25deg);
+  }
+}
+
+
+.glass-shine::after {
+  content: "";
+
+  position: absolute;
+
+  top: -60%;
+  left: -70%;
+
+  width: 80%;
+  height: 220%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+
+  animation: glassShine 7s infinite;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   SUBTITLE PREMIUM
+========================= */
+
+@keyframes subtitleFade {
+  0%,100% {
+    opacity: .65;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+.subtitle-premium {
+  animation: subtitleFade 4s ease-in-out infinite;
 }
